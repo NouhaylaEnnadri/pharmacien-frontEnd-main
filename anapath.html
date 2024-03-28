@@ -1,0 +1,211 @@
+d<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Ogani Template" />
+    <meta name="keywords" content="Ogani, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Service Biologique</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/here.css" type="text/css" />
+    <link rel="stylesheet" href="css/test.css" type="text/css" />
+    <link rel="stylesheet" href="css/categories.css" type="text/css" />
+    <script>
+      $(document).ready(function () {
+        // Fetch products of category "equipements"
+        fetchProducts("produits anapath");
+      });
+    </script>
+    <script
+      src="https://kit.fontawesome.com/234e03b889.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    .subcategories {
+      display: flex;
+      flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+    }
+
+    .subcategories button {
+      margin-right: 10px; /* Add space between buttons */
+      margin-bottom: 10px; /* Add space below buttons */
+      padding: 8px 16px; /* Add padding to buttons */
+      font-size: 16px; /* Increase font size */
+      background-color: #4caf50; /* Green background color */
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .subcategories button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+
+    .subcategories button.active {
+      background-color: #006400; /* Darker green for active state */
+    }
+  </style>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!--header-->
+    <script>
+      $(function () {
+        $("#header").load("views/include/header.html");
+      });
+    </script>
+    <div id="header"></div>
+    <div>
+      <p></p>
+      <br />
+    </div>
+    <div>
+      <p></p>
+    </div>
+    <!--
+Start About Section
+==================================== -->
+    <!-- Start About Section -->
+    <div class="row spad gray-background">
+      <div class="col-md-12">
+        <br />
+        <h2>Produis <b>anapath</b></h2>
+        <br /><br />
+        <div id="subcategoriesContainer" class="subcategories">
+          <!-- Subcategories will be dynamically added here -->
+        </div>
+        <div id="productContainer" class="row">
+          <!-- Products will be dynamically added here by JavaScript -->
+        </div>
+      </div>
+    </div>
+    <!-- End section -->
+
+    <!-- End section -->
+
+    <!-- End section -->
+
+    <!--footer-->
+    <script>
+      $(document).ready(function () {
+        const mainCategory = "produits anapath";
+        const subcategories = [
+          "Réactifs d'anatomo-pathologie",
+          "Colorants / Poudres",
+          "Cytologie monocouche",
+          "Consommables",
+          "Matériaux",
+        ];
+        // Fetch products of main category
+        fetchProducts(mainCategory);
+        // Load and display subcategories
+        loadSubcategories(subcategories);
+      });
+
+      // Function to load and display subcategories
+      function loadSubcategories(subcategories) {
+        const subcategoriesContainer = document.getElementById(
+          "subcategoriesContainer"
+        );
+        subcategoriesContainer.innerHTML = ""; // Clear existing content
+
+        subcategories.forEach((subcategory) => {
+          const subcategoryButton = document.createElement("button");
+          subcategoryButton.textContent = subcategory;
+          subcategoryButton.onclick = (event) =>
+            filterProductsBySubcategory(subcategory, event);
+          subcategoriesContainer.appendChild(subcategoryButton);
+        });
+      }
+
+      // Function to fetch products based on category and display them
+      function fetchProducts(mainCategory, subcategory = null) {
+        let url = `/api/products?category=${mainCategory}`;
+        if (subcategory) {
+          url += `&subcategory=${subcategory}`;
+        }
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => displayProducts(data))
+          .catch((error) => console.error("Error fetching products:", error));
+      }
+
+      // Function to display products
+      function displayProducts(products) {
+        const productContainer = document.getElementById("productContainer");
+        productContainer.innerHTML = ""; // Clear the container
+
+        products.forEach((product) => {
+          const productElement = document.createElement("div");
+          productElement.className = "product";
+          // Populate productElement with product details
+          // This is a simplified example; adjust it based on your product structure
+          productElement.innerHTML = `<h5>${product.name}</h5>`;
+          productContainer.appendChild(productElement);
+        });
+      }
+
+      // Function to filter products by subcategory
+      function filterProductsBySubcategory(subcategory, event) {
+        const mainCategory = "produits anapath";
+        fetchProducts(mainCategory, subcategory);
+
+        const buttons = document.querySelectorAll(".subcategories button");
+        buttons.forEach((button) => {
+          button.classList.remove("active");
+        });
+
+        // Add active class to the clicked button
+        const clickedButton = event.target;
+        clickedButton.classList.add("active");
+      }
+
+      $(function () {
+        $("#footer").load("footer.html");
+      });
+    </script>
+    <div id="footer"></div>
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="/server/js/fetchProducts.js"></script>
+  </body>
+</html>
