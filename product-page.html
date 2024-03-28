@@ -2,22 +2,9 @@
 <html lang="zxx">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Ogani Template" />
-    <meta name="keywords" content="Ogani, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Service Biologique</title>
-
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="product.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
@@ -30,79 +17,60 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/here.css" type="text/css" />
     <link rel="stylesheet" href="css/test.css" type="text/css" />
-    <script
-      src="https://kit.fontawesome.com/234e03b889.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="css/categories.css" type="text/css" />
   </head>
+  <style>
+    /* Add this CSS to adjust the layout */
+    .about .container {
+      padding-top: 50px; /* Adjust padding as needed */
+    }
 
+    .about .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .about .col-lg-6 {
+      flex: 0 0 50%; /* Set width to 50% */
+    }
+
+    .about .text-justify {
+      padding-right: 30px; /* Add padding to the right */
+    }
+
+    .about img {
+      border: 5px solid #4caf50; /* Green border */
+    }
+
+    .about table {
+      width: 100%; /* Set table width to 100% */
+      margin-top: 30px; /* Adjust margin as needed */
+    } /* CSS for the description container */
+    .description-container {
+      max-width: 400px; /* Adjust the max-width as needed */
+      background-color: #f9f9f9; /* Light background color */
+      padding: 20px; /* Add padding */
+      border-radius: 5px; /* Rounded corners */
+      font-family: Arial, sans-serif; /* Specify font family */
+      font-size: 14px; /* Adjust font size */
+      line-height: 1.6; /* Adjust line height */
+      margin-bottom: 20px; /* Add margin to separate from image */
+    }
+
+    /* CSS for the paragraph inside the description container */
+    .description-container p {
+      max-width: 100%; /* Ensure the paragraph stays within the container */
+    }
+  </style>
   <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-      <div class="loader"></div>
-    </div>
+    <!-- Page content -->
 
-    <style>
-      /* Style for the green button */
-      .btn-green {
-        background-color: #4caf50;
-        /* Green color */
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin-top: 20px;
-        /* Adjust this margin as needed */
-      }
-
-      /* Center the button horizontally */
-      .text-center {
-        text-align: center;
-      }
-
-      .col-lg-6.text-justify p {
-        font-size: 15px;
-        /* Adjust the font size as needed */
-      }
-
-      table {
-        width: 50%; /* Réglez la largeur selon vos besoins */
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        margin-left: 60px;
-      }
-
-      th,
-      td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-
-      th {
-        background-color: #4caf50;
-      }
-    </style>
-    <!--header-->
     <script>
       $(function () {
-        $("#header").load("header.html");
+        $("#header").load("views/include/header.html");
       });
     </script>
     <div id="header"></div>
-
-    <div>
-      <p></p>
-      <br />
-    </div>
-    <div>
-      <p></p>
-    </div>
-    <!--
-Start About Section
-==================================== -->
     <section class="about" id="about" data-section="about">
       <div class="container">
         <div class="row justify-content-center">
@@ -117,32 +85,17 @@ Start About Section
         </div>
         <div class="row">
           <div class="col-lg-6 text-justify">
-            <p>
-              Il est nécessaire de procéder à la décalcification des os et
-              d’autres tissus durs à des fins d’analyse microscopique de
-              l’échantillon au cours d’un traitement histologique régulier.
-              L’échantillon est complètement immergé dans la solution
-              décalcifiante. La durée nécessaire à la déminéralisation
-              (décalcification) dépend de la taille et de la densité de
-              l’échantillon traité. Les décalcifications des os et des tissus
-              durs nécessitent des acides inorganiques ou organiques ou des
-              réactifs chélatants. OsteoFast 1 est constitué d’acide
-              chlorhydrique inorganique. Il élimine rapidement le calcium, de
-              cette façon adoucit le tissu et le rend prêt pour le traitement
-              ultérieur. Les échantillons d’essai sont l’os et le tissu dur
-              (dents) et le tissu kératinisé (verrues filiformes, clous). La
-              couleur bleu clair d’OsteoFast 1 distingue le produit des autres
-              produits BioGnost pour la décalcification (OsteoFast 2 jaune pâle
-              et OsteoSens incolore). De ce fait, il peut également être
-              distingué d’autres fixateurs et solvants utilisés dans les
-              laboratoires histologiques.
-            </p>
+            <p>Category: <span id="productCategory"></span></p>
+            <p>Subcategory: <span id="productSubcategory"></span></p>
+            <!-- Description container with smaller width -->
+            <div class="description-container">
+              <p id="productDescription2"></p>
+            </div>
           </div>
 
-          <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="col-lg-6 mb-5 mb-lg-0 mr-10">
             <img
-              loading="lazy"
-              src="img/product5.png"
+              id="productImage"
               class="img-fluid imgAbout"
               alt=""
               width="300"
@@ -150,52 +103,16 @@ Start About Section
             />
           </div>
         </div>
-
         <!-- End row -->
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Produit</th>
-            <th>OF1-OT-1L</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Taille</td>
-            <td>1000mL</td>
-          </tr>
-          <tr>
-            <td>But d'utilisation</td>
-            <td>CE IVD</td>
-          </tr>
-          <tr>
-            <td>Conditions de stockage</td>
-            <td>15-25 ° C</td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- End container -->
     </section>
-    <!-- End section -->
 
-    <!--footer-->
     <script>
       $(function () {
-        $("#footer").load("footer.html");
+        $("#footer").load("views/include/footer.html");
       });
     </script>
     <div id="footer"></div>
-
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="./server/js/populateProducts.js"></script>
   </body>
 </html>

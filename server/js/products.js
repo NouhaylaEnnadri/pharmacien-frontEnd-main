@@ -16,7 +16,7 @@ async function fetchProducts() {
 
           <td style="white-space: normal;">${product.description}</td>
           <td>
-            <img src="http://127.0.0.1:5501/server/${product.image}" alt="${product.name}"
+            <img src="http://127.0.0.1:5505/server/${product.image}" alt="${product.name}"
                 style="max-width: 100px; max-height: 100px;">
           </td>
           <td>
@@ -26,6 +26,9 @@ async function fetchProducts() {
             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
               <i class="material-icons" onclick="deleteProduct('${product._id}')" data-toggle="tooltip" title="Delete">&#xE872;</i>
             </a>
+            <a href="../../Table.html" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span></span></a>
+
+            
           </td>
         </tr>
       `;
@@ -89,7 +92,7 @@ async function deleteProduct(productId) {
     }
 
     const response = await fetch(
-      `http://localhost:5001/api/product/${productId}`,
+      "http://localhost:5001/api/product/" + productId,
       {
         method: "DELETE",
       }
@@ -104,7 +107,7 @@ async function deleteProduct(productId) {
     } else {
       console.log(data.message);
       // Handle failed deletion, display error message, etc.
-      alert(`Failed to delete product: ${data.message}`);
+      alert("Failed to delete product: ${data.message}");
     }
   } catch (error) {
     console.error("Fetch error:", error);
@@ -116,11 +119,11 @@ function editProduct(productId) {
   currentProductId = productId;
 
   // Fetch the product details using the productId and populate the modal fields
-  fetch(`http://localhost:5001/api/product/${productId}`)
+  fetch("http://localhost:5001/api/product/" + productId)
     .then((response) => {
       if (!response.ok) {
         throw new Error(
-          `Failed to fetch product details. Status: ${response.status}`
+          "Failed to fetch product details. Status: ${response.status}"
         );
       }
       return response.json();
@@ -175,7 +178,7 @@ async function updateProduct() {
     formData.append("image", newImage);
 
     const response = await fetch(
-      `http://localhost:5001/api/product/${currentProductId}`,
+      "http://localhost:5001/api/product/" + currentProductId,
       {
         method: "PUT",
         body: formData,
@@ -193,7 +196,7 @@ async function updateProduct() {
     } else {
       console.log(data.message);
       // Handle failed update, display error message, etc.
-      alert(`Failed to update product: ${data.message}`);
+      alert("Failed to update product: ${data.message}");
     }
   } catch (error) {
     console.error("Fetch error:", error);

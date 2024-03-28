@@ -70,6 +70,62 @@ d<!DOCTYPE html>
     .subcategories button.active {
       background-color: #006400; /* Darker green for active state */
     }
+
+    @media (max-width: 767.98px) {
+      #productContainer .col-md-6 {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      #productContainer .col-md-6 {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .single-product {
+        margin-left: auto;
+        margin-right: auto;
+        display: block; /* Ensure the element behaves like a block element */
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .thumb-wrapper {
+        height: 250px; /* Set a fixed height */
+        width: 250px; /* Set a fixed width */
+        margin-left: auto; /* Center the product container horizontally */
+        margin-right: auto; /* Center the product container horizontally */
+        overflow: hidden; /* Ensure the entire image is visible */
+      }
+
+      .thumb-wrapper .img-box {
+        height: 300px; /* Set a fixed height for the image container */
+        width: 300px; /* Set a fixed width for the image container */
+        margin-left: auto; /* Center the product container horizontally */
+        margin-right: auto; /* Center the product container horizontally */
+        overflow: hidden;
+      }
+
+      .thumb-wrapper .img-box img {
+        width: 70%; /* Allow the image to fill the container horizontally */
+        height: 50%; /* Let the browser calculate the height based on the width to maintain aspect ratio */
+        max-height: 100%; /* Ensure the image does not exceed the container's height */
+        object-fit: cover;
+      }
+
+      .thumb-content {
+        padding: 10px; /* Add padding to the text content */
+        text-align: center; /* Center align the text content */
+      }
+
+      .thumb-content h4 {
+        margin-top: -150px; /* Adjust top margin of the text */
+        margin-bottom: 5px; /* Adjust bottom margin of the text */
+        font-size: 16px; /* Decrease font size of the text */
+      }
+    }
   </style>
 
   <body>
@@ -96,17 +152,26 @@ d<!DOCTYPE html>
 Start About Section
 ==================================== -->
     <!-- Start About Section -->
-    <div class="row spad gray-background">
-      <div class="col-md-12">
-        <br />
-        <h2>Produis <b>anapath</b></h2>
-        <br /><br />
-        <div id="subcategoriesContainer" class="subcategories">
-          <!-- Subcategories will be dynamically added here -->
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-12 text-center">
+          <h2>Produits Anapath</h2>
         </div>
-        <div id="productContainer" class="row">
-          <!-- Products will be dynamically added here by JavaScript -->
+      </div>
+      <br />
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <!-- Subcategories -->
+          <div id="subcategoriesContainer" class="subcategories text-center">
+            <!-- Subcategories buttons will be added here dynamically -->
+          </div>
         </div>
+      </div>
+      <div class="row mt-4" id="productContainer">
+        <div class="col-md-6 col-sm-12">
+          <!-- Product content here -->
+        </div>
+        <!-- Repeat the above div for each product -->
       </div>
     </div>
     <!-- End section -->
@@ -154,14 +219,19 @@ Start About Section
         if (subcategory) {
           url += `&subcategory=${subcategory}`;
         }
+        console.log("Fetching products with URL:", url); // Log the URL
         fetch(url)
           .then((response) => response.json())
-          .then((data) => displayProducts(data))
+          .then((data) => {
+            console.log("Received product data:", data); // Log the received data
+            displayProducts(data);
+          })
           .catch((error) => console.error("Error fetching products:", error));
       }
 
       // Function to display products
       function displayProducts(products) {
+        console.log("Displaying products:", products.length); // Log the number of products
         const productContainer = document.getElementById("productContainer");
         productContainer.innerHTML = ""; // Clear the container
 
@@ -173,12 +243,16 @@ Start About Section
           productElement.innerHTML = `<h5>${product.name}</h5>`;
           productContainer.appendChild(productElement);
         });
+        console.log("Products added to the DOM:", products.length); // Log the number of products added
       }
 
       // Function to filter products by subcategory
       function filterProductsBySubcategory(subcategory, event) {
+        console.log("Filtering products by subcategory:", subcategory);
         const mainCategory = "produits anapath";
+        // Pass the selected subcategory to fetchProducts
         fetchProducts(mainCategory, subcategory);
+        console.log("Selected Subcategory:", subcategory);
 
         const buttons = document.querySelectorAll(".subcategories button");
         buttons.forEach((button) => {
@@ -191,7 +265,7 @@ Start About Section
       }
 
       $(function () {
-        $("#footer").load("footer.html");
+        $("#footer").load("views/include/footer.html");
       });
     </script>
     <div id="footer"></div>

@@ -175,6 +175,7 @@
           <form id="editProductForm">
             <div class="modal-header">
               <h4 class="modal-title">Edit Product</h4>
+
               <button
                 type="button"
                 class="close"
@@ -279,18 +280,18 @@
         subcategoryDropdown.innerHTML = "";
 
         // Check selected category and add subcategories accordingly
-        if (category === "produits anapath") {
-          // Add subcategories for "équipements"
+        if (category === "équipements") {
+          // Equipment category has no subcategories, so we exit early
+          return;
+        } else if (category === "produits anapath") {
+          // Add subcategories for "Produits anapath"
           addSubcategoryOption("Réactifs d'anatomo-pathologie");
           addSubcategoryOption("Colorants / Poudres");
           addSubcategoryOption("Cytologie monocouche");
           addSubcategoryOption("Consommables");
           addSubcategoryOption("Matériaux");
-        } else if (category === "équipements") {
-          //addSubcategoryOption("produits anapath");
-          return; // Exit the function early
         } else if (category === "microscopes") {
-          // Add subcategories for "microscopes"
+          // Add subcategories for "Microscopes"
           addSubcategoryOption("Microscope binoculaire et trinoculaire");
           addSubcategoryOption("Microscope à fluorescence");
           addSubcategoryOption("Microscope LCD");
@@ -300,9 +301,7 @@
 
         // Display or hide subcategories based on the selected category
         subcategoriesGroup.style.display =
-          category === "équipements" ||
-          category === "microscopes" ||
-          category === "produits anapath"
+          category === "produits anapath" || category === "microscopes"
             ? "block"
             : "none";
       }

@@ -31,35 +31,31 @@
     <link rel="stylesheet" href="css/here.css" type="text/css" />
     <link rel="stylesheet" href="css/test.css" type="text/css" />
     <link rel="stylesheet" href="css/categories.css" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
 
     <script>
       $(document).ready(function () {
-          // Fetch products of category "equipements"
-          fetchProducts("équipements");
+        // Fetch products of category "equipements"
+        fetchProducts("équipements");
       });
-  </script>
+    </script>
     <script
       src="https://kit.fontawesome.com/234e03b889.js"
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
   </head>
-  <style>
-  
-  </style>
-  
-  
-  
-  
+  <style></style>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
     </div>
 
-   
     <!--header-->
     <script>
       $(function () {
@@ -77,43 +73,45 @@
     <!--
 Start About Section
 ==================================== -->
-<!-- Start About Section -->
-<div class="row spad gray-background">
-  <div class="col-md-12">
-    <br />
-    <h2>Nos <b>Equipements</b></h2>
-    <div id="productContainer" class="row">
-      <!-- Products will be dynamically added here by JavaScript -->
+    <div class="row spad gray-background">
+      <div class="col-md-12">
+        <br />
+        <h2>Nos <b>equipements</b></h2>
+        <br /><br />
+        <div id="subcategoriesContainer" class="subcategories">
+          <!-- Subcategories will be dynamically added here -->
+        </div>
+        <div id="productContainer" class="row">
+          <!-- Products will be dynamically added here by JavaScript -->
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<!-- End section -->
+    <!-- End section -->
 
-<!-- End section -->
-   
+    <!-- End section -->
+
     <!-- End section -->
 
     <!--footer-->
     <script>
       $(function () {
-        $("#footer").load("footer.html");
+        $("#footer").load("views/include/footer.html");
       });
     </script>
     <div id="footer"></div>
 
     <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/custom.js"></script>
-<script src="/server/js/fetchProducts.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="/server/js/fetchProducts.js"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   </body>
 </html>
