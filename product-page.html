@@ -102,6 +102,7 @@
       }
 
       /* Styling for green box */
+      /* Styling for green box */
       .green-box {
         background-color: white; /* White background color */
         border: 1px solid #4caf50; /* Green border */
@@ -109,13 +110,13 @@
         border-radius: 5px; /* Rounded corners */
         color: #4caf50; /* Green text color */
         margin-bottom: 15px; /* Add margin to separate from other content */
-        margin-top: -70px;
         width: fit-content; /* Set width to fit content */
         font-size: 14px; /* Adjust font size */
         display: inline-block; /* Make boxes inline */
         margin-right: 10px; /* Add space between boxes */
         white-space: nowrap; /* Prevent text from wrapping */
       }
+
       /* Styling for label */
       .green-box .label {
         color: inherit; /* Inherit parent's text color (green) */
@@ -124,6 +125,20 @@
       /* Styling for content */
       .green-box .content {
         color: black; /* Black text color */
+      }
+
+      /* Media query for smaller screens */
+      @media only screen and (max-width: 768px) {
+        .product-details {
+          flex-wrap: wrap; /* Allow flex items to wrap */
+        }
+
+        .green-box {
+          display: block; /* Change to block display for stacking on smaller screens */
+          width: 100%; /* Set width to 100% to occupy full width */
+          margin-right: 0; /* Remove margin */
+          margin-bottom: 10px; /* Add margin between boxes */
+        }
       }
 
       /* Media query for smaller screens */
