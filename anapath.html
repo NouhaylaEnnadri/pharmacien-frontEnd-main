@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+d<!DOCTYPE html>
 <html lang="zxx">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Service Biologique" />
-    <meta name="keywords" content="biologie, produits, anapath" />
+    <meta name="description" content="Ogani Template" />
+    <meta name="keywords" content="Ogani, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Service Biologique</title>
@@ -14,258 +14,176 @@
       rel="stylesheet"
     />
 
-    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
-
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-
-    <!-- Custom CSS -->
-    <style>
-      /* Custom CSS styles */
-      .subcategories {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .subcategories button {
-        margin-right: 10px;
-        margin-bottom: 10px;
-        padding: 8px 16px;
-        font-size: 16px;
-        background-color: #4caf50;
-        border: none;
-        color: white;
-        cursor: pointer;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-      }
-
-      .subcategories button:hover {
-        background-color: #45a049;
-      }
-
-      .subcategories button.active {
-        background-color: #006400;
-      }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/here.css" type="text/css" />
+    <link rel="stylesheet" href="css/test.css" type="text/css" />
+    <link rel="stylesheet" href="css/categories.css" type="text/css" />
+    <script>
+      $(document).ready(function () {
+        // Fetch products of category "equipements"
+        fetchProducts("produits anapath");
+      });
+    </script>
+    <script
+      src="https://kit.fontawesome.com/234e03b889.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
+  <style>
+    .subcategories {
+      display: flex;
+      flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+    }
+
+    .subcategories button {
+      margin-right: 10px; /* Add space between buttons */
+      margin-bottom: 10px; /* Add space below buttons */
+      padding: 8px 16px; /* Add padding to buttons */
+      font-size: 16px; /* Increase font size */
+      background-color: #4caf50; /* Green background color */
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .subcategories button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+
+    .subcategories button.active {
+      background-color: #006400; /* Darker green for active state */
+    }
+
+    @media (max-width: 767.98px) {
+      #productContainer .col-md-6 {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      #productContainer .col-md-6 {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .single-product {
+        margin-left: auto;
+        margin-right: auto;
+        display: block; /* Ensure the element behaves like a block element */
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .thumb-wrapper {
+        height: 250px; /* Set a fixed height */
+        width: 250px; /* Set a fixed width */
+        margin-left: auto; /* Center the product container horizontally */
+        margin-right: auto; /* Center the product container horizontally */
+        overflow: hidden; /* Ensure the entire image is visible */
+      }
+
+      .thumb-wrapper .img-box {
+        height: 300px; /* Set a fixed height for the image container */
+        width: 300px; /* Set a fixed width for the image container */
+        margin-left: auto; /* Center the product container horizontally */
+        margin-right: auto; /* Center the product container horizontally */
+        overflow: hidden;
+      }
+
+      .thumb-wrapper .img-box img {
+        width: 70%; /* Allow the image to fill the container horizontally */
+        height: 50%; /* Let the browser calculate the height based on the width to maintain aspect ratio */
+        max-height: 100%; /* Ensure the image does not exceed the container's height */
+        object-fit: cover;
+      }
+
+      .thumb-content {
+        padding: 10px; /* Add padding to the text content */
+        text-align: center; /* Center align the text content */
+      }
+
+      .thumb-content h4 {
+        margin-top: -150px; /* Adjust top margin of the text */
+        margin-bottom: 5px; /* Adjust bottom margin of the text */
+        font-size: 16px; /* Decrease font size of the text */
+      }
+    }
+  </style>
+
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
     </div>
 
-    <!-- Header -->
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#">Service Biologique</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Accueil</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Produits</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">À propos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container mt-5">
-      <div class="row">
+    <!--header-->
+    <script>
+      $(function () {
+        $("#header").load("views/include/header.html");
+      });
+    </script>
+    <div id="header"></div>
+    <div>
+      <p></p>
+      <br />
+    </div>
+    <div>
+      <p></p>
+    </div>
+    <!--
+Start About Section
+==================================== -->
+    <!-- Start About Section -->
+    <div class="container">
+      <div class="row mt-5">
         <div class="col-md-12 text-center">
           <h2>Produits Anapath</h2>
         </div>
       </div>
+      <br />
       <div class="row mt-4">
         <div class="col-md-12">
+          <!-- Subcategories -->
           <div id="subcategoriesContainer" class="subcategories text-center">
             <!-- Subcategories buttons will be added here dynamically -->
           </div>
         </div>
       </div>
       <div class="row mt-4" id="productContainer">
-        <!-- Product content will be displayed here dynamically -->
+        <div class="col-md-6 col-sm-12">
+          <!-- Product content here -->
+        </div>
+        <!-- Repeat the above div for each product -->
       </div>
     </div>
+    <!-- End section -->
 
-    <!-- Footer -->
-    <footer class="bg-light text-center text-lg-start mt-5">
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2024 Service Biologique
-      </div>
-    </footer>
+    <!-- End section -->
 
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- End section -->
 
-    <!-- Font Awesome JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Custom JavaScript -->
+    <!--footer-->
     <script>
-      const products = [
-        {
-          name: "dalola",
-          category: "produits anapath",
-          subcategory: "Réactifs d'anatomo-pathologie",
-          image: "a.png",
-          price: "10$",
-        },
-        {
-          name: "yobozime",
-          category: "produits anapath",
-          subcategory: "Réactifs d'anatomo-pathologie",
-          image: "bain_marie.png",
-          price: "15$",
-        },
-        {
-          name: "heheh",
-          category: "produits anapath",
-          subcategory: "Colorants / Poudres",
-          image: "binoc_trinoc.png",
-          price: "20$",
-        },
-        {
-          name: "chihaja",
-          category: "produits anapath",
-          subcategory: "Colorants / Poudres",
-          image: "cam.png",
-          price: "25$",
-        },
-        {
-          name: "teet",
-          category: "produits anapath",
-          subcategory: "Cytologie monocouche",
-          image: "etuve.png",
-          price: "30$",
-        },
-        {
-          name: "hohoho",
-          category: "produits anapath",
-          subcategory: "Matériaux",
-          image: "loupe.png",
-          price: "35$",
-        },
-        {
-          name: "noyl",
-          category: "produits anapath",
-          subcategory: "Consommables",
-          image: "lcd.png",
-          price: "40$",
-        },
-        {
-          name: "ouafae",
-          category: "produits anapath",
-          subcategory: "Consommables",
-          image: "vortex.png",
-          price: "45$",
-        },
-      ];
-
-      // Function to fetch products based on category and subcategory
-      async function fetchProducts(categoryToFilter, subcategoryToFilter) {
-        try {
-          // Filter products based on category and subcategory
-          const filteredProducts = products.filter(
-            (product) =>
-              product.category === categoryToFilter &&
-              (!subcategoryToFilter ||
-                product.subcategory === subcategoryToFilter)
-          );
-          console.log("Filtered products:", filteredProducts);
-
-          // Display filtered products
-          displayProducts(filteredProducts);
-        } catch (error) {
-          console.error("Error fetching products:", error);
-          alert("Error fetching products. Please try again.");
-        }
-      }
-
-      // Function to display products
-      function displayProducts(products) {
-        const productContainer = document.getElementById("productContainer");
-        productContainer.innerHTML = "";
-
-        products.forEach((product) => {
-          const card = document.createElement("div");
-          card.className = "col-lg-3 col-md-6 col-sm-6 mb-4";
-          card.innerHTML = `
-                    <div class="thumb-wrapper">
-                        <a href="product-page.html?name=${product.name}&subcategory=${product.subcategory}&price=${product.price}">
-                            <div class="img-box">
-                                <img src="img/produits/${product.image}" class="img-fluid" alt="${product.name}" />
-                            </div>
-                            <div class="thumb-content">
-                                <h4>${product.name}</h4>
-                            </div>
-                        </a>
-                    </div>
-                `;
-          productContainer.appendChild(card);
-        });
-      }
-
-      // Function to load and display subcategories
-      function loadSubcategories(subcategories) {
-        const subcategoriesContainer = document.getElementById(
-          "subcategoriesContainer"
-        );
-        subcategoriesContainer.innerHTML = "";
-
-        subcategories.forEach((subcategory) => {
-          const subcategoryButton = document.createElement("button");
-          subcategoryButton.textContent = subcategory;
-          subcategoryButton.onclick = () => {
-            const activeButton = document.querySelector(
-              ".subcategories button.active"
-            );
-            if (activeButton) {
-              activeButton.classList.remove("active");
-            }
-            subcategoryButton.classList.add("active");
-            fetchProducts("produits anapath", subcategory);
-          };
-          subcategoriesContainer.appendChild(subcategoryButton);
-        });
-      }
-
-      // Load subcategories when the page loads
-      window.addEventListener("load", () => {
+      $(document).ready(function () {
+        const mainCategory = "produits anapath";
         const subcategories = [
           "Réactifs d'anatomo-pathologie",
           "Colorants / Poudres",
@@ -273,10 +191,95 @@
           "Consommables",
           "Matériaux",
         ];
+        // Fetch products of main category
+        fetchProducts(mainCategory);
+        // Load and display subcategories
         loadSubcategories(subcategories);
-        // Display all products initially
-        fetchProducts("produits anapath");
+      });
+
+      // Function to load and display subcategories
+      function loadSubcategories(subcategories) {
+        const subcategoriesContainer = document.getElementById(
+          "subcategoriesContainer"
+        );
+        subcategoriesContainer.innerHTML = ""; // Clear existing content
+
+        subcategories.forEach((subcategory) => {
+          const subcategoryButton = document.createElement("button");
+          subcategoryButton.textContent = subcategory;
+          subcategoryButton.onclick = (event) =>
+            filterProductsBySubcategory(subcategory, event);
+          subcategoriesContainer.appendChild(subcategoryButton);
+        });
+      }
+
+      // Function to fetch products based on category and display them
+      function fetchProducts(mainCategory, subcategory = null) {
+        let url = `/api/products?category=${mainCategory}`;
+        if (subcategory) {
+          url += `&subcategory=${subcategory}`;
+        }
+        console.log("Fetching products with URL:", url); // Log the URL
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Received product data:", data); // Log the received data
+            displayProducts(data);
+          })
+          .catch((error) => console.error("Error fetching products:", error));
+      }
+
+      // Function to display products
+      function displayProducts(products) {
+        console.log("Displaying products:", products.length); // Log the number of products
+        const productContainer = document.getElementById("productContainer");
+        productContainer.innerHTML = ""; // Clear the container
+
+        products.forEach((product) => {
+          const productElement = document.createElement("div");
+          productElement.className = "product";
+          // Populate productElement with product details
+          // This is a simplified example; adjust it based on your product structure
+          productElement.innerHTML = `<h5>${product.name}</h5>`;
+          productContainer.appendChild(productElement);
+        });
+        console.log("Products added to the DOM:", products.length); // Log the number of products added
+      }
+
+      // Function to filter products by subcategory
+      function filterProductsBySubcategory(subcategory, event) {
+        console.log("Filtering products by subcategory:", subcategory);
+        const mainCategory = "produits anapath";
+        // Pass the selected subcategory to fetchProducts
+        fetchProducts(mainCategory, subcategory);
+        console.log("Selected Subcategory:", subcategory);
+
+        const buttons = document.querySelectorAll(".subcategories button");
+        buttons.forEach((button) => {
+          button.classList.remove("active");
+        });
+
+        // Add active class to the clicked button
+        const clickedButton = event.target;
+        clickedButton.classList.add("active");
+      }
+
+      $(function () {
+        $("#footer").load("views/include/footer.html");
       });
     </script>
+    <div id="footer"></div>
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="/server/js/fetchProducts.js"></script>
   </body>
 </html>
