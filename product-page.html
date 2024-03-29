@@ -18,50 +18,132 @@
     <link rel="stylesheet" href="css/here.css" type="text/css" />
     <link rel="stylesheet" href="css/test.css" type="text/css" />
     <link rel="stylesheet" href="css/categories.css" type="text/css" />
+    <style>
+      /* Add this CSS to adjust the layout */
+      .about .container {
+        padding-top: 50px; /* Adjust padding as needed */
+      }
+
+      .about .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .about .col-lg-6 {
+        flex: 0 0 50%; /* Set width to 50% */
+        padding-right: 15px; /* Add padding to the right */
+      }
+
+      .about .text-justify {
+        padding-right: 30px; /* Add padding to the right */
+      }
+
+      .about img {
+        border: 5px solid #4caf50; /* Green border */
+        max-width: 100%; /* Ensure the image does not overflow the column */
+        height: auto; /* Maintain aspect ratio */
+      }
+
+      .about table {
+        width: 100%; /* Set table width to 100% */
+        margin-top: 10px; /* Adjust margin as needed */
+      }
+
+      /* CSS for the description container */
+      .description-container {
+        background-color: #f9f9f9; /* Light background color */
+        padding: 20px; /* Add padding */
+        border-radius: 5px; /* Rounded corners */
+        font-family: Arial, sans-serif; /* Specify font family */
+        font-size: 14px; /* Adjust font size */
+        line-height: 1.6; /* Adjust line height */
+        margin-top: 30px; /* Add margin to separate from image */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        flex: 1; /* Take remaining space */
+        width: 500px; /* Fixed width for the description box */
+      }
+
+      /* CSS for the paragraph inside the description container */
+      .description-container p {
+        max-width: 100%; /* Ensure the paragraph stays within the container */
+      }
+
+      /* Styling for left column (Fiche Signalétique and product details) */
+      .col-lg-6:nth-child(odd) {
+        padding-right: 15px; /* Add padding to the right for spacing */
+        align-self: flex-start; /* Align items to the top */
+      }
+
+      /* Styling for right column (image) */
+      .col-lg-6:nth-child(even) {
+        padding-left: 15px; /* Add padding to the left for spacing */
+        min-height: 200px; /* Set a minimum height for the column */
+      }
+      .image-container {
+        min-height: 200px; /* Set a minimum height for the image container */
+        display: flex; /* Enable flexbox for vertical alignment */
+        align-items: center; /* Center items vertically */
+        justify-content: center; /* Center items horizontally */
+      }
+      /* Ensure proper alignment for image */
+      .imgAbout {
+        border: 5px solid #4caf50; /* Green border */
+        max-width: 100%; /* Ensure the image does not overflow the column */
+        max-height: 100%; /* Ensure the image does not overflow the container */
+        object-fit: contain; /* Maintain aspect ratio */
+      }
+
+      /* Styling for green box */
+      .product-details {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center the content horizontally */
+        max-width: 300px; /* Adjust the maximum width as needed */
+        margin: auto; /* Center the container horizontally */
+      }
+
+      /* Styling for green box */
+      .green-box {
+        background-color: white; /* White background color */
+        border: 1px solid #4caf50; /* Green border */
+        padding: 10px 8px !important; /* Reduce padding */
+        border-radius: 5px; /* Rounded corners */
+        color: #4caf50; /* Green text color */
+        margin-bottom: 15px; /* Add margin to separate from other content */
+        margin-top: -70px;
+        width: fit-content; /* Set width to fit content */
+        font-size: 14px; /* Adjust font size */
+        display: inline-block; /* Make boxes inline */
+        margin-right: 10px; /* Add space between boxes */
+        white-space: nowrap; /* Prevent text from wrapping */
+      }
+      /* Styling for label */
+      .green-box .label {
+        color: inherit; /* Inherit parent's text color (green) */
+      }
+
+      /* Styling for content */
+      .green-box .content {
+        color: black; /* Black text color */
+      }
+
+      /* Media query for smaller screens */
+      @media only screen and (max-width: 992px) {
+        .about .col-lg-6 {
+          flex: 0 0 100%; /* Set width to 100% for smaller screens */
+          display: flex; /* Enable flexbox for centering */
+          justify-content: center; /* Center items horizontally */
+          flex-direction: column;
+        }
+
+        .about .col-lg-6:nth-child(even) {
+          padding-left: 0; /* Remove left padding for even columns on smaller screens */
+        }
+        .about .col-lg-6:not(:last-child) {
+          margin-bottom: 40px; /* Add margin between description and image */
+        }
+      }
+    </style>
   </head>
-  <style>
-    /* Add this CSS to adjust the layout */
-    .about .container {
-      padding-top: 50px; /* Adjust padding as needed */
-    }
-
-    .about .row {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .about .col-lg-6 {
-      flex: 0 0 50%; /* Set width to 50% */
-    }
-
-    .about .text-justify {
-      padding-right: 30px; /* Add padding to the right */
-    }
-
-    .about img {
-      border: 5px solid #4caf50; /* Green border */
-    }
-
-    .about table {
-      width: 100%; /* Set table width to 100% */
-      margin-top: 30px; /* Adjust margin as needed */
-    } /* CSS for the description container */
-    .description-container {
-      max-width: 400px; /* Adjust the max-width as needed */
-      background-color: #f9f9f9; /* Light background color */
-      padding: 20px; /* Add padding */
-      border-radius: 5px; /* Rounded corners */
-      font-family: Arial, sans-serif; /* Specify font family */
-      font-size: 14px; /* Adjust font size */
-      line-height: 1.6; /* Adjust line height */
-      margin-bottom: 20px; /* Add margin to separate from image */
-    }
-
-    /* CSS for the paragraph inside the description container */
-    .description-container p {
-      max-width: 100%; /* Ensure the paragraph stays within the container */
-    }
-  </style>
   <body>
     <!-- Page content -->
 
@@ -74,33 +156,50 @@
     <section class="about" id="about" data-section="about">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-xl-6 col-lg-8">
+          <div class="col-12">
             <!-- section title -->
             <div class="section-title from-blog__title">
               <h2>Fiche Signalétique :</h2>
-              <br />
             </div>
             <!-- /section title -->
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-6 text-justify">
-            <p>Category: <span id="productCategory"></span></p>
-            <p>Subcategory: <span id="productSubcategory"></span></p>
-            <!-- Description container with smaller width -->
-            <div class="description-container">
-              <p id="productDescription2"></p>
+        <div class="col-lg-12">
+          <div class="product-details">
+            <div class="green-box">
+              <span class="label">Nom:</span>
+              <span id="name" class="content">Product Name</span>
+            </div>
+            <div class="green-box">
+              <span class="label">Catégorie:</span>
+              <span id="productCategory" class="content">Category Name</span>
+            </div>
+            <div class="green-box">
+              <span class="label">Subcatégorie:</span>
+              <span id="productSubcategory" class="content"
+                >Subcategory Name</span
+              >
             </div>
           </div>
-
-          <div class="col-lg-6 mb-5 mb-lg-0 mr-10">
-            <img
-              id="productImage"
-              class="img-fluid imgAbout"
-              alt=""
-              width="300"
-              height="200"
-            />
+        </div>
+        <div class="col-lg-12 mt-3">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="description-container">
+                <p id="productDescription2">Product description goes here...</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="col-lg-12 mb-5 mb-lg-0 mr-10 image-container">
+                <img
+                  id="productImage"
+                  class="img-fluid imgAbout"
+                  alt=""
+                  width="300"
+                  height="200"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <!-- End row -->
@@ -113,6 +212,6 @@
       });
     </script>
     <div id="footer"></div>
-    <script src="./server/js/populateProducts.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

@@ -13,7 +13,6 @@ async function fetchProducts() {
           <td>${product.name}</td>
           <td>${product.category}</td>
           <td>${product.subCategory}</td>
-
           <td style="white-space: normal;">${product.description}</td>
           <td>
             <img src="http://127.0.0.1:5505/server/${product.image}" alt="${product.name}"
@@ -27,8 +26,6 @@ async function fetchProducts() {
               <i class="material-icons" onclick="deleteProduct('${product._id}')" data-toggle="tooltip" title="Delete">&#xE872;</i>
             </a>
             <a href="../../Table.html" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span></span></a>
-
-            
           </td>
         </tr>
       `;
@@ -39,7 +36,6 @@ async function fetchProducts() {
     // Handle the error, e.g., show an alert
   }
 }
-fetchProducts();
 
 // Function to submit the product form
 async function submitForm() {
@@ -48,7 +44,6 @@ async function submitForm() {
     const description = document.getElementById("productDescription").value;
     const category = document.getElementById("productCategory").value;
     const subCategory = document.getElementById("productSubcategory").value;
-
     const imageInput = document.getElementById("productImage");
     const image = imageInput.files[0];
 
@@ -57,7 +52,6 @@ async function submitForm() {
     formData.append("description", description);
     formData.append("subCategory", subCategory);
     formData.append("category", category);
-
     formData.append("image", image);
 
     const response = await fetch("http://localhost:5001/api/product", {
@@ -65,17 +59,18 @@ async function submitForm() {
       body: formData,
     });
 
-    const contentType = response.headers.get("content-type");
     const data = await response.json();
 
     if (response.ok) {
       console.log(data.message);
+      fetchProducts(); // Refresh the product list after successful submission
     } else {
-      console.log(data.message);
+      console.error("Failed to submit product:", data.message);
       // Handle failed submission, display error message, etc.
     }
   } catch (error) {
     console.error("Fetch error:", error);
+    alert("Failed to fetch. Please check your network connection.");
   }
 }
 
@@ -92,85 +87,59 @@ async function deleteProduct(productId) {
     }
 
     const response = await fetch(
-      "http://localhost:5001/api/product/" + productId,
+      `http://localhost:5001/api/product/${productId}`,
       {
         method: "DELETE",
       }
     );
 
-    const contentType = response.headers.get("content-type");
     const data = await response.json();
 
     if (response.ok) {
       console.log(data.message);
       fetchProducts(); // Refresh the product list after successful deletion
     } else {
-      console.log(data.message);
+      console.error("Failed to delete product:", data.message);
       // Handle failed deletion, display error message, etc.
-      alert("Failed to delete product: ${data.message}");
     }
   } catch (error) {
     console.error("Fetch error:", error);
     alert("Failed to fetch. Please check your network connection.");
   }
 }
-function editProduct(productId) {
-  // Set the currentProductId before opening the modal
-  currentProductId = productId;
 
-  // Fetch the product details using the productId and populate the modal fields
-  fetch("http://localhost:5001/api/product/" + productId)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          "Failed to fetch product details. Status: ${response.status}"
-        );
-      }
-      return response.json();
-    })
-    .then((product) => {
-      console.log(product);
+// Function to fetch and populate product details for editing
+async function editProduct(productId) {
+  try {
+    const response = await fetch(`http://localhost:5001/api/product/${productId}`);
+    const product = await response.json();
 
-      // Populate the modal fields with the product details
-      document.getElementById("editProductName").value = product.name;
-      document.getElementById("editProductDescription").value =
-        product.description;
-      document.getElementById("editProductCategory").value = product.category;
+    document.getElementById("editProductName").value = product.name;
+    document.getElementById("editProductDescription").value = product.description;
+    document.getElementById("editProductCategory").value = product.category;
 
-      // Set the image source
-      const editProductImage = document.getElementById("editProductImage");
+    const editProductImage = document.getElementById("editProductImage");
+    if (editProductImage) {
+      editProductImage.src = product.image || "path_to_previous_image.jpg";
+    }
 
-      if (editProductImage) {
-        // Check if the product has an image
-        if (product.image) {
-          editProductImage.src = product.image;
-        } else {
-          // If no new image is selected, keep the previous image
-          editProductImage.src = "path_to_previous_image.jpg";
-        }
-      } else {
-        console.error("Image element not found.");
-      }
-
-      // Show the "Edit Product" modal
-      $("#editEmployeeModal").modal("show");
-    })
-    .catch((error) => {
-      console.error("Error fetching product details:", error);
-      // Handle the error, e.g., show an alert to the user
-      alert("Error fetching product details. Please try again.");
-    });
+    $("#editEmployeeModal").modal("show");
+  } catch (error) {
+    console.error("Error fetching product details:", error);
+    alert("Error fetching product details. Please try again.");
+  }
 }
+
 // Function to update a product
 async function updateProduct() {
   try {
+    const currentProductId = getCurrentProductId(); // Assuming this function gets the current product ID
     const name = document.getElementById("editProductName").value;
     const description = document.getElementById("editProductDescription").value;
     const category = document.getElementById("editProductCategory").value;
     const imageInput = document.getElementById("editProductImage");
     const newImage = imageInput.files[0];
 
-    // Create FormData to handle both JSON and file data
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
@@ -178,25 +147,22 @@ async function updateProduct() {
     formData.append("image", newImage);
 
     const response = await fetch(
-      "http://localhost:5001/api/product/" + currentProductId,
+      `http://localhost:5001/api/product/${currentProductId}`,
       {
         method: "PUT",
         body: formData,
       }
     );
 
-    const contentType = response.headers.get("content-type");
     const data = await response.json();
 
     if (response.ok) {
       console.log(data.message);
       fetchProducts(); // Refresh the product list after successful update
-      // Hide the "Edit Product" modal after updating
-      $("#editEmployeeModal").modal("hide");
+      $("#editEmployeeModal").modal("hide"); // Hide the "Edit Product" modal after updating
     } else {
-      console.log(data.message);
+      console.error("Failed to update product:", data.message);
       // Handle failed update, display error message, etc.
-      alert("Failed to update product: ${data.message}");
     }
   } catch (error) {
     console.error("Fetch error:", error);
