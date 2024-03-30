@@ -1,48 +1,33 @@
-d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zxx">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Ogani Template" />
-    <meta name="keywords" content="Ogani, unica, creative, html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Service Biologique</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Ogani Template" />
+  <meta name="keywords" content="Ogani, unica, creative, html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Service Biologique</title>
 
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet" />
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/here.css" type="text/css" />
-    <link rel="stylesheet" href="css/test.css" type="text/css" />
-    <link rel="stylesheet" href="css/categories.css" type="text/css" />
-    <script>
-      $(document).ready(function () {
-        // Fetch products of category "equipements"
-        fetchProducts("produits anapath");
-      });
-    </script>
-    <script
-      src="https://kit.fontawesome.com/234e03b889.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css" />
+  <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/here.css" type="text/css" />
+  <link rel="stylesheet" href="css/test.css" type="text/css" />
+  <link rel="stylesheet" href="css/categories.css" type="text/css" />
+</head>
+<style>
+   
     .subcategories {
       display: flex;
       flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
@@ -128,158 +113,110 @@ d<!DOCTYPE html>
     }
   </style>
 
-  <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-      <div class="loader"></div>
-    </div>
+</style>
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
 
-    <!--header-->
-    <script>
-      $(function () {
-        $("#header").load("views/include/header.html");
-      });
-    </script>
-    <div id="header"></div>
-    <div>
-      <p></p>
-      <br />
-    </div>
-    <div>
-      <p></p>
-    </div>
-    <!--
+  <!--header-->
+  <script>
+    $(function () {
+      $("#header").load("views/include/header.html");
+    });
+  </script>
+  <div id="header"></div>
+  <div>
+    <p></p>
+    <br />
+  </div>
+  <div>
+    <p></p>
+  </div>
+  <!--
 Start About Section
 ==================================== -->
-    <!-- Start About Section -->
-    <div class="container">
-      <div class="row mt-5">
-        <div class="col-md-12 text-center">
-          <h2>Produits Anapath</h2>
-        </div>
-      </div>
-      <br />
-      <div class="row mt-4">
-        <div class="col-md-12">
-          <!-- Subcategories -->
-          <div id="subcategoriesContainer" class="subcategories text-center">
-            <!-- Subcategories buttons will be added here dynamically -->
-          </div>
-        </div>
-      </div>
-      <div class="row mt-4" id="productContainer">
-        <div class="col-md-6 col-sm-12">
-          <!-- Product content here -->
-        </div>
-        <!-- Repeat the above div for each product -->
+  <!-- Start About Section -->
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-12 text-center">
+        <h2>Produits Anapath</h2>
       </div>
     </div>
-    <!-- End section -->
+    <br />
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <!-- Subcategories -->
+        <div id="subcategoriesContainer" class="subcategories text-center">
+          <button class="btn btn-default filter-button active" data-filter="Réactifs"> Réactifs d'anatomo-pathologie </button>
+          <button class="btn btn-default filter-button" data-filter="Consommables">Consommables</button>
+          <button class="btn btn-default filter-button" data-filter="Matériaux"> Matériaux</button>
+          <button class="btn btn-default filter-button" data-filter="Colorants / Poudres"> Colorants / Poudres
+          </button>
+          <button class="btn btn-default filter-button" data-filter="Cytologie monocouche"> Cytologie Monocouche
+          </button>
 
-    <!-- End section -->
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4" id="productContainer">
+      <div class="col-md-6 col-sm-12">
+        <!-- Product content here -->
+      </div>
+      <!-- Repeat the above div for each product -->
+    </div>
+  </div>
 
-    <!-- End section -->
-
-    <!--footer-->
-    <script>
-      $(document).ready(function () {
-        const mainCategory = "produits anapath";
-        const subcategories = [
-          "Réactifs d'anatomo-pathologie",
-          "Colorants / Poudres",
-          "Cytologie monocouche",
-          "Consommables",
-          "Matériaux",
-        ];
-        // Fetch products of main category
-        fetchProducts(mainCategory);
-        // Load and display subcategories
-        loadSubcategories(subcategories);
-      });
-
-      // Function to load and display subcategories
-      function loadSubcategories(subcategories) {
-        const subcategoriesContainer = document.getElementById(
-          "subcategoriesContainer"
-        );
-        subcategoriesContainer.innerHTML = ""; // Clear existing content
-
-        subcategories.forEach((subcategory) => {
-          const subcategoryButton = document.createElement("button");
-          subcategoryButton.textContent = subcategory;
-          subcategoryButton.onclick = (event) =>
-            filterProductsBySubcategory(subcategory, event);
-          subcategoriesContainer.appendChild(subcategoryButton);
-        });
-      }
-
-      // Function to fetch products based on category and display them
-      function fetchProducts(mainCategory, subcategory = null) {
-        let url = `/api/products?category=${mainCategory}`;
-        if (subcategory) {
-          url += `&subcategory=${subcategory}`;
+  <script>
+    $(document).ready(function () {
+      // Fetch products of category "Réactifs d'anatomo-pathologie" when the page loads
+      fetchProducts("produits anapath", "Réactifs d'anatomo-pathologie");
+  
+      $(".filter-button").click(function () {
+        var value = $(this).attr('data-filter');
+  
+        console.log("Clicked category:", value); // Log the category name when clicked
+  
+        // Check if the category is "PRODUITS ANAPATH" to extract the subcategory
+        if (value === "Réactifs") {
+          // If "Réactifs d'anatomo-pathologie" is selected, fetch products with subcategory "Réactifs d'anatomo-pathologie"
+          fetchProducts("produits anapath", "Réactifs d'anatomo-pathologie");
+        } else if (value === "Consommables" || value === "Matériaux" ||  value === "Colorants / Poudres" ||  value === "Cytologie monocouche") {
+          // For other categories, directly fetch products without considering subcategory
+          fetchProducts("produits anapath", value);
         }
-        console.log("Fetching products with URL:", url); // Log the URL
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Received product data:", data); // Log the received data
-            displayProducts(data);
-          })
-          .catch((error) => console.error("Error fetching products:", error));
-      }
-
-      // Function to display products
-      function displayProducts(products) {
-        console.log("Displaying products:", products.length); // Log the number of products
-        const productContainer = document.getElementById("productContainer");
-        productContainer.innerHTML = ""; // Clear the container
-
-        products.forEach((product) => {
-          const productElement = document.createElement("div");
-          productElement.className = "product";
-          // Populate productElement with product details
-          // This is a simplified example; adjust it based on your product structure
-          productElement.innerHTML = `<h5>${product.name}</h5>`;
-          productContainer.appendChild(productElement);
-        });
-        console.log("Products added to the DOM:", products.length); // Log the number of products added
-      }
-
-      // Function to filter products by subcategory
-      function filterProductsBySubcategory(subcategory, event) {
-        console.log("Filtering products by subcategory:", subcategory);
-        const mainCategory = "produits anapath";
-        // Pass the selected subcategory to fetchProducts
-        fetchProducts(mainCategory, subcategory);
-        console.log("Selected Subcategory:", subcategory);
-
-        const buttons = document.querySelectorAll(".subcategories button");
-        buttons.forEach((button) => {
-          button.classList.remove("active");
-        });
-
-        // Add active class to the clicked button
-        const clickedButton = event.target;
-        clickedButton.classList.add("active");
-      }
-
-      $(function () {
-        $("#footer").load("views/include/footer.html");
+  
+        // Apply active class to the clicked button
+        $(".filter-button").removeClass("active");
+        $(this).addClass("active");
       });
-    </script>
-    <div id="footer"></div>
+    });
+  
+    $(function () {
+      $("#footer").load("views/include/footer.html");
+    });
+  
+    $(function () {
+      $("#footer").load("views/include/footer.html");
+    });
+  
+    $(function () {
+      $("#footer").load("views/include/footer.html");
+    });
+  </script>
+  <div id="footer"></div>
 
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="/server/js/fetchProducts.js"></script>
-  </body>
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/mixitup.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="/server/js/fetchProducts.js"></script>
+</body>
 </html>

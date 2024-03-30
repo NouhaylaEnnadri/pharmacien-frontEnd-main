@@ -22,6 +22,33 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="../css/crud.css" type="text/css" />
+    <style>
+      /* Add custom styles for responsiveness */
+      .modal-dialog {
+        width: 90%;
+        max-width: 600px;
+        margin: 30px auto;
+      }
+      .table-title .btn {
+        margin-bottom: 20px;
+      }
+      @media (max-width: 768px) {
+        .table-title {
+          display: block;
+        }
+        .table-title .row {
+          display: flex;
+          flex-direction: column;
+        }
+        .table-title .col-sm-6 {
+          width: 100%;
+        }
+        .table-title .btn {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -29,40 +56,38 @@
       <div class="table-wrapper">
         <div class="table-title">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-xs-12 col-sm-6">
               <h2>Manage <b>Products</b></h2>
             </div>
-            <div class="col-sm-6">
+            <div class="col-xs-12 col-sm-6">
               <a
                 href="#addEmployeeModal"
                 class="btn btn-success"
                 data-toggle="modal"
-                ><i class="material-icons">&#xE147;</i>
-                <span>Add New Product</span></a
               >
-              <a
-                href="#deleteEmployeeModal"
-                class="btn btn-danger"
-                data-toggle="modal"
-                ><i class="material-icons">&#xE15C;</i> <span>Delete</span></a
-              >
+                <i class="material-icons">&#xE147;</i>
+                <span>Add New Product</span>
+              </a>
             </div>
           </div>
         </div>
-        <table class="table table-striped table-hover" id="productTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Subcategory</th>
-              <!-- Added Subcategory column -->
-              <th>Description</th>
-              <th>Image</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="table-body"></tbody>
-        </table>
+        <div class="table-responsive">
+          <!-- Wrap the table inside a div with class table-responsive -->
+          <table class="table table-striped table-hover" id="productTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <!-- Added Subcategory column -->
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
         <div class="clearfix">
           <div class="hint-text" id="entries-info"></div>
           <ul class="pagination" id="pagination"></ul>
@@ -282,7 +307,7 @@
         // Check selected category and add subcategories accordingly
         if (category === "équipements") {
           // Equipment category has no subcategories, so we exit early
-          return;
+          addSubcategoryOption("");
         } else if (category === "produits anapath") {
           // Add subcategories for "Produits anapath"
           addSubcategoryOption("Réactifs d'anatomo-pathologie");
@@ -292,11 +317,7 @@
           addSubcategoryOption("Matériaux");
         } else if (category === "microscopes") {
           // Add subcategories for "Microscopes"
-          addSubcategoryOption("Microscope binoculaire et trinoculaire");
-          addSubcategoryOption("Microscope à fluorescence");
-          addSubcategoryOption("Microscope LCD");
-          addSubcategoryOption("Caméra microscope");
-          addSubcategoryOption("Loupe binoculaire");
+          addSubcategoryOption("");
         }
 
         // Display or hide subcategories based on the selected category

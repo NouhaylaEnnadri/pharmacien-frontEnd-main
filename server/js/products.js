@@ -25,7 +25,6 @@ async function fetchProducts() {
             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
               <i class="material-icons" onclick="deleteProduct('${product._id}')" data-toggle="tooltip" title="Delete">&#xE872;</i>
             </a>
-            <a href="../../Table.html" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span></span></a>
           </td>
         </tr>
       `;
@@ -63,7 +62,8 @@ async function submitForm() {
 
     if (response.ok) {
       console.log(data.message);
-      fetchProducts(); // Refresh the product list after successful submission
+      fetchProducts();
+      resetForm(); 
     } else {
       console.error("Failed to submit product:", data.message);
       // Handle failed submission, display error message, etc.
@@ -72,6 +72,14 @@ async function submitForm() {
     console.error("Fetch error:", error);
     alert("Failed to fetch. Please check your network connection.");
   }
+}
+
+function resetForm() {
+  document.getElementById("productName").value = "";
+  document.getElementById("productDescription").value = "";
+  document.getElementById("productCategory").value = "";
+  document.getElementById("productSubcategory").value = "";
+  document.getElementById("productImage").value = "";
 }
 
 // Function to delete a product with confirmation
