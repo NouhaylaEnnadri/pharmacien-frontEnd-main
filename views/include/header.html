@@ -53,7 +53,6 @@
       <ul class="main-menu">
         <li><a href="../index.html">Accueil</a></li>
         <li><a href="../../views/certification.html">Certifications</a></li>
-
         <li class="has-submenu">
           <a href="#">Catégories</a>
           <ul class="sub-menu">
@@ -66,5 +65,17 @@
       </ul>
     </nav>
   </header>
-  <script src="js/custom.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Custom JS for toggling menu -->
+  <script>
+    $(document).ready(function () {
+      // Toggle menu when clicking on the hamburger icon
+      $(".menu-link").click(function () {
+        $("#menu").toggleClass("open");
+      });
+    });
+  </script>
 </html>
