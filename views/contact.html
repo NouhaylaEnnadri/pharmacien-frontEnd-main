@@ -58,6 +58,34 @@
       .col-lg-6.text-justify p {
         font-size: 15px; /* Adjust the font size as needed */
       }
+      @media (max-width: 768px) {
+        .main-banner .container {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          text-align: center;
+        }
+        .col-lg-6:nth-child(2) {
+          margin-top: 20px; /* Add top margin to the second column */
+        }
+        .footer__about {
+          text-align: center;
+        }
+        .footer__about ul {
+          padding-left: 0;
+        }
+        .footer__about ul li {
+          list-style: none;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+        .footer__about ul li i {
+          margin-right: 10px;
+        }
+        .footer__about iframe {
+          width: 100%;
+          height: 200px;
+        }
+      }
     </style>
     <!--header-->
     <script>
@@ -82,7 +110,7 @@
     <section class="section main-banner" id="top" data-section="section1">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="col-lg-6 col-md-6 col-sm-12 mb-4 mb-sm-0">
             <div class="footer__about">
               <ul>
                 <li>
@@ -118,7 +146,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="col-lg-6 col-md-6 col-sm-12">
             <!-- Embedded Google Map -->
             <iframe
               width="100%"

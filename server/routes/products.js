@@ -63,7 +63,7 @@ router.post("/", uploadWithStorage.single("image"), async (req, res) => {
       name: newProduct.name,
       description: newProduct.description,
       category: newProduct.category,
-      subCategory : newProduct.subCategory,
+      subCategory: newProduct.subCategory,
       image: newProduct.image,
     });
   } catch (error) {
@@ -87,23 +87,22 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-
 // Update a product by ID
 router.put("/:id", uploadWithStorage.single("image"), async (req, res) => {
   try {
     // Validate the request body
-    const { error } = productValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
 
     // Destructure relevant properties from the request body
-    const { name, description, category } = req.body;
-
+    const { name, description, category, subCategory } = req.body;
+    console.log(name, description, category, subCategory);
     // Check if the request includes an image
     const updatedFields = {
       name,
       description,
       category,
+      subCategory,
     };
+    console.log(name, description, category, subCategory);
 
     if (req.file) {
       // Assuming you are using middleware like multer for handling file uploads
@@ -130,6 +129,7 @@ router.put("/:id", uploadWithStorage.single("image"), async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
 router.get("/:id", async (req, res) => {
   try {
     const productId = req.params.id;
@@ -144,6 +144,23 @@ router.get("/:id", async (req, res) => {
     res.json(product);
   } catch (error) {
     console.error("Error fetching product details by ID:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+router.get("/:name", async (req, res) => {
+  try {
+    const productName = req.params.name;
+
+    // Find the product by name in the database
+    const product = await Product.findOne({ name: productName });
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.json(product);
+  } catch (error) {
+    console.error("Error fetching product details by name:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 });

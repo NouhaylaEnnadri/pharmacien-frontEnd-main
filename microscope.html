@@ -41,8 +41,77 @@
       src="https://kit.fontawesome.com/234e03b889.js"
       crossorigin="anonymous"
     ></script>
+    <style>
+      .product-card {
+        margin-bottom: 15px; /* Default margin */
+      }
+      @media (min-width: 992px) {
+        #productContainer .col-lg-6 {
+          width: 50%; /* Two products per row for large screens */
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        #productContainer .col-md-6 {
+          width: 50%; /* Two products per row for medium screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        #productContainer .col-sm-6 {
+          width: 100%; /* One product per row for small screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        .single-product {
+          margin-left: auto;
+          margin-right: auto;
+          display: block; /* Ensure the element behaves like a block element */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        .thumb-wrapper {
+          height: 250px; /* Set a fixed height */
+          width: 250px; /* Set a fixed width */
+          margin-left: auto; /* Center the product container horizontally */
+          margin-right: auto; /* Center the product container horizontally */
+          overflow: hidden; /* Ensure the entire image is visible */
+        }
+
+        .thumb-wrapper .img-box {
+          height: 300px; /* Set a fixed height for the image container */
+          width: 300px; /* Set a fixed width for the image container */
+          margin-left: auto; /* Center the product container horizontally */
+          margin-right: auto; /* Center the product container horizontally */
+          overflow: hidden;
+        }
+
+        .thumb-wrapper .img-box img {
+          width: 70%; /* Allow the image to fill the container horizontally */
+          height: 100%; /* Let the browser calculate the height based on the width to maintain aspect ratio */
+          max-height: 100%; /* Ensure the image does not exceed the container's height */
+          object-fit: cover;
+        }
+
+        .thumb-content {
+          width: 100%; /* Text container fills the width */
+          height: 30%; /* Text takes the remaining 30% of the thumb-wrapper's height */
+          display: flex; /* Use flex to center text */
+          justify-content: center; /* Center text horizontally */
+          align-items: center; /* Center text vertically */
+          text-align: center; /* Center align the text content */
+        }
+
+        .thumb-content h4 {
+          margin-top: 0px; /* Adjust top margin of the text */
+          margin-bottom: 0px; /* Adjust bottom margin of the text */
+          font-size: 1rem; /* Decrease font size of the text */
+        }
+      }
+    </style>
   </head>
-  <style></style>
 
   <body>
     <!-- Page Preloder -->

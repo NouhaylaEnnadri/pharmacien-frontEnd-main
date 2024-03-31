@@ -216,14 +216,20 @@
         </div>
       </div>
     </div>
+
     <!-- Edit Product Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <div
+      id="editEmployeeModal"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editEmployeeModalLabel"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <form id="editProductForm">
             <div class="modal-header">
               <h4 class="modal-title">Edit Product</h4>
-
               <button
                 type="button"
                 class="close"
@@ -257,27 +263,21 @@
                 <label>Category</label>
                 <select
                   class="form-control"
-                  id="productCategory"
+                  id="editProductCategory"
                   name="category"
-                  required
-                  onchange="updateSubcategories()"
+                  onchange="updateSubcategoriesInEditModal()"
                 >
                   <option value="produits anapath">produits anapath</option>
                   <option value="microscopes">microscopes</option>
                   <option value="équipements">équipements</option>
                 </select>
               </div>
-              <div
-                class="form-group"
-                id="subcategoriesGroup"
-                style="display: none"
-              >
+              <div class="form-group" id="editSubcategoriesGroup">
                 <label>Subcategory</label>
                 <select
                   class="form-control"
-                  id="productSubcategory"
-                  name="subcategory"
-                  required
+                  id="editProductSubcategory"
+                  name="editsubcategory"
                 >
                   <!-- Subcategories will be dynamically added here -->
                 </select>
@@ -314,7 +314,6 @@
         </div>
       </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../server/js/products.js"></script>
@@ -330,7 +329,7 @@
         // Check selected category and add subcategories accordingly
         if (category === "équipements") {
           // Equipment category has no subcategories, so we exit early
-          addSubcategoryOption("");
+          addSubcategoryOption(" ");
         } else if (category === "produits anapath") {
           // Add subcategories for "Produits anapath"
           addSubcategoryOption("Réactifs d'anatomo-pathologie");
@@ -340,13 +339,45 @@
           addSubcategoryOption("Matériaux");
         } else if (category === "microscopes") {
           // Add subcategories for "Microscopes"
+          addSubcategoryOption(" ");
         }
 
         // Display or hide subcategories based on the selected category
         subcategoriesGroup.style.display =
-          category === "produits anapath" || category === "microscopes"
-            ? "block"
-            : "none";
+          category === "produits anapath" ? "block" : "none";
+      }
+
+      function updateSubcategoriesInEditModal() {
+        var category = document.getElementById("editProductCategory").value;
+        var subcategoriesGroup = document.getElementById(
+          "editSubcategoriesGroup"
+        );
+        var subcategoryDropdown = document.getElementById(
+          "editProductSubcategory"
+        );
+
+        // Clear existing subcategories
+        subcategoryDropdown.innerHTML = "";
+
+        // Check selected category and add subcategories accordingly
+        if (category === "équipements") {
+          // Equipment category has no subcategories, so we exit early
+          addSubcategoryOptionEdit(" ");
+        } else if (category === "produits anapath") {
+          // Add subcategories for "Produits anapath"
+          addSubcategoryOptionEdit("Réactifs d'anatomo-pathologie");
+          addSubcategoryOptionEdit("Colorants / Poudres");
+          addSubcategoryOptionEdit("Cytologie monocouche");
+          addSubcategoryOptionEdit("Consommables");
+          addSubcategoryOptionEdit("Matériaux");
+        } else if (category === "microscopes") {
+          // Add subcategories for "Microscopes"
+          addSubcategoryOptionEdit(" ");
+        }
+
+        // Display or hide subcategories based on the selected category
+        subcategoriesGroup.style.display =
+          category === "produits anapath" ? "block" : "none";
       }
 
       function addSubcategoryOption(subcategory) {
@@ -357,12 +388,30 @@
         subcategoryDropdown.add(option);
       }
 
+      function addSubcategoryOptionEdit(subcategory) {
+        var subcategoryDropdown = document.getElementById(
+          "editProductSubcategory"
+        );
+        var option = document.createElement("option");
+        option.value = subcategory;
+        option.text = subcategory;
+        subcategoryDropdown.add(option);
+      }
+
+      //search
       $(document).ready(function () {
         $("#searchInput").on("keyup", function () {
           var value = $(this).val().toLowerCase();
           $("#productTable tbody tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
           });
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#editEmployeeModal").on("show.bs.modal", function (e) {
+          updateSubcategoriesInEditModal();
         });
       });
     </script>
