@@ -28,4 +28,4 @@ app.set("view engine", "ejs");
 app.use("/api/admin", authRoute);
 app.use("/api/product", productRoute);
 
-app.listen(5001, () => console.log("Listening on port 5001"));
+app.listen(5506, () => console.log("Listening on port 5001"));
