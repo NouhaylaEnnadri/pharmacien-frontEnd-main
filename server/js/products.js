@@ -1,7 +1,7 @@
 // Function to fetch products from the server
 async function fetchProducts() {
   try {
-    const response = await fetch("http://localhost:5001/api/product");
+    const response = await fetch("http://localhost:5506/api/product");
     const products = await response.json();
 
     const tableBody = document.getElementById("table-body");
@@ -59,7 +59,7 @@ async function submitForm() {
 
     formData.append("image", image);
 
-    const response = await fetch("http://localhost:5001/api/product", {
+    const response = await fetch("http://localhost:5506/api/product", {
       method: "POST",
       body: formData,
     });
@@ -91,7 +91,7 @@ async function deleteProduct(productId) {
     }
 
     const response = await fetch(
-      "http://localhost:5001/api/product/" + productId,
+      "http://localhost:5506/api/product/" + productId,
       {
         method: "DELETE",
       }
@@ -117,7 +117,7 @@ function editProduct(productId) {
   // Set the currentProductId before opening the modal
   currentProductId = productId;
   // Fetch the product details using the productId and populate the modal fields
-  fetch("http://localhost:5001/api/product/" + productId)
+  fetch("http://localhost:5506/api/product/" + productId)
     .then((response) => {
       if (!response.ok) {
         throw new Error(
@@ -164,7 +164,7 @@ function editProduct(productId) {
 }
 //calculate
 async function updateProduct() {
-  console.log("http://localhost:5001/api/product/" + currentProductId);
+  console.log("http://localhost:5506/api/product/" + currentProductId);
 
   try {
     const name = document.getElementById("editProductName").value;
@@ -189,7 +189,7 @@ async function updateProduct() {
     }
 
     const response = await fetch(
-      "http://localhost:5001/api/product/" + currentProductId,
+      "http://localhost:5506/api/product/" + currentProductId,
       {
         method: "PUT",
         body: formData,
